@@ -7,4 +7,5 @@ urlpatterns = [
     path('', views.crear_productos, name='crear_producto'),
     # Crear la URL de la vista crear_producto
     path('products/', views.listar_productos, name='listar_producto'),
+    path('delete', views.delete_productos, name='delete_productos')
 ]
