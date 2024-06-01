@@ -23,8 +23,6 @@ def crear_productos(request):
     return render(request, 'crear.html')
 
 #def actualizar_productos(request):
-    productos = Producto.objects.all()
-    return render(request, 'listar.html', {'productos': productos})
 
 # función para eliminar productos de la base de datos atraves de un formulario
 @csrf_exempt
