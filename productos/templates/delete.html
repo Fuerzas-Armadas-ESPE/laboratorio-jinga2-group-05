@@ -26,9 +26,9 @@
     </tr>
     {% for producto in productos %}
     <tr class="d-flex justify-content-center">
-        <td class="d-flex flex-fill justify-content-center">{{ producto.nombre }}</td>
-        <td class="d-flex flex-fill justify-content-center">{{ producto.precio }}</td>
-        <td class="d-flex flex-fill justify-content-center">{{ producto.cantidad }}</td>
+        <td class="w-100 text-center">{{ producto.nombre }}</td>
+        <td class="w-100 text-center">{{ producto.precio }}</td>
+        <td class="w-100 text-center">{{ producto.cantidad }}</td>
     </tr>
     {% endfor %}
 </table>
