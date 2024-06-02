@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block title %} Actualizar Producto {% endblock %}
+
+{% block content %}
+<h1>Actualizar Producto</h1>
+<form method="POST">
+    {% csrf_token %}
+    <label for="nombre">NOMBRE: </label>
+    <input type="text" id="nombre" name="nombre" value="{{ producto.nombre }}" required>
+    
+    <label for="precio">PRECIO: </label>
+    <input type="number" id="precio" name="precio" value="{{ producto.precio }}" step="0.1" min="0.1" required>
+    
+    <label for="cantidad">CANTIDAD: </label>
+    <input type="number" id="cantidad" name="cantidad" value="{{ producto.cantidad }}" min="0" max="25" required>
+    
+    <button type="submit">Actualizar Producto</button>
+</form>
+<a href="{% url 'listar_productos' %}">Volver a la lista de productos</a>
+{% endblock %}
