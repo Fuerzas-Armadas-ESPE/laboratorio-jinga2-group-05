@@ -13,8 +13,10 @@
             </td>
             <td class="bg-success-subtle text-success-emphasis rounded-top-4 d-flex flex-fill justify-content-center">Precio
             </td>
-            <td class="bg-success-subtle text-success-emphasis rounded-top-4 d-flex flex-fill justify-content-center">
-                Cantidad</td>
+            <td class="bg-success-subtle text-success-emphasis rounded-top-4 d-flex flex-fill justify-content-center">Cantidad
+            </td>
+            <td class="bg-success-subtle text-success-emphasis rounded-top-4 d-flex flex-fill justify-content-center">Actulizar 
+            </td>
             </tr>
             {% for producto in productos %}
             <tr class="d-flex justify-content-center">
@@ -22,7 +24,7 @@
             <td class="d-flex flex-fill justify-content-center">{{ producto.precio }}</td>
             <td class="d-flex flex-fill justify-content-center">{{ producto.cantidad }}</td>
             <td class="d-flex flex-fill justify-content-center">
-                <a class="mx-5 btn btn-outline-success m-3" href="{% url 'actualizar_productos' producto.id %}">Actualizar Producto</a>
+                <a class="mx-5 btn btn-outline-success m-3" href="{% url 'actualizar_productos' producto.id %}">Actualizar</a>
             </td>
         </tr>
         {% endfor %}
