@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+
+{% block title %} Actualizar Producto {% endblock %}
+
+{% block content %}
+    <h1 class="d-flex justify-content-center bg-success text-white m-2 p-2 rounded-3">Actualizar Producto</h1>
+    <form method="POST">
+        {% csrf_token %}
+        <div class="form-group row"> 
+            <label for="nombre" class="col-sm-2 col-form-label">Nombre: </label>
+            <div class="col-sm-10">
+                <input 
+                type="text" 
+                id="nombre" 
+                name="nombre" 
+                value="{{ producto.nombre }}" 
+                class="form-control"
+                required>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label for="precio" class="col-sm-2 col-form-label">Precio: </label>
+            <div class="col-sm-10">
+                <input 
+                type="number" 
+                id="precio" 
+                name="precio" 
+                value="{{ producto.precio }}" 
+                step="0.1" 
+                min="0.1" 
+                class="form-control"
+                required>
+            </div>
+        </div>
+        
+        <div class="form-group row">
+            <label for="cantidad" class="col-sm-2 col-form-label">CANTIDAD: </label>
+            <div class="col-sm-10">
+                <input 
+                type="number" 
+                id="cantidad" 
+                name="cantidad" 
+                value="{{ producto.cantidad }}" 
+                min="0" 
+                max="25" 
+                class="form-control"
+                required>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-sm-10">
+                <button type="submit" class="mx-5 btn btn-outline-success">Actualizar Producto</button>
+            </div>
+        </div>
+        
+    </form>
+    <a class="mx-5 btn btn-outline-success"
+    href="{% url 'listar_productos' %}">Volver a la lista de productos</a>
+{% endblock %}
