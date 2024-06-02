@@ -2,32 +2,35 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <h1 class="d-flex justify-content-center bg-success text-white m-2 p-2 rounded-3">Listar Productos</h1>
-    <div class="d-flex justify-content-center">
-        <a class="mx-5 btn btn-outline-success m-3" href="{% url 'crear_productos' %}">Crear Productos</a>
-        <a class="mx-5 btn btn-outline-success m-3" href="{% url 'delete_productos' %}">Eliminar Productos</a>
-    </div>
-    <table class="table table-striped">
-        <tr class="table d-flex justify-content-center">
-            <td class="bg-success-subtle text-success-emphasis rounded-top-4 d-flex flex-fill justify-content-center">Nombre
-            </td>
-            <td class="bg-success-subtle text-success-emphasis rounded-top-4 d-flex flex-fill justify-content-center">Precio
-            </td>
-            <td class="bg-success-subtle text-success-emphasis rounded-top-4 d-flex flex-fill justify-content-center">Cantidad
-            </td>
-            <td class="bg-success-subtle text-success-emphasis rounded-top-4 d-flex flex-fill justify-content-center">Actulizar 
-            </td>
-            </tr>
-            {% for producto in productos %}
-            <tr class="d-flex justify-content-center">
-            <td class="d-flex flex-fill justify-content-center">{{ producto.nombre }}</td>
-            <td class="d-flex flex-fill justify-content-center">{{ producto.precio }}</td>
-            <td class="d-flex flex-fill justify-content-center">{{ producto.cantidad }}</td>
-            <td class="d-flex flex-fill justify-content-center">
-                <a class="mx-5 btn btn-outline-success m-3" href="{% url 'actualizar_productos' producto.id %}">Actualizar</a>
-            </td>
-        </tr>
-        {% endfor %}
-    </table>
-    
+<h1 class="d-flex justify-content-center bg-success text-white m-2 p-2 rounded-3">Listar Productos</h1>
+<div class="d-flex justify-content-center">
+    <a class="mx-5 btn btn-outline-success m-3" href="{% url 'crear_productos' %}">Crear Productos</a>
+    <a class="mx-5 btn btn-outline-success m-3" href="{% url 'delete_productos' %}">Eliminar Productos</a>
+</div>
+<table class="table table-striped">
+    <tr class="table d-flex justify-content-center">
+        <td class="bg-success-subtle text-success-emphasis rounded-top-4 d-flex flex-fill justify-content-center">Nombre
+        </td>
+        <td class="bg-success-subtle text-success-emphasis rounded-top-4 d-flex flex-fill justify-content-center">Precio
+        </td>
+        <td class="bg-success-subtle text-success-emphasis rounded-top-4 d-flex flex-fill justify-content-center">
+            Cantidad
+        </td>
+        <td class="bg-success-subtle text-success-emphasis rounded-top-4 d-flex flex-fill justify-content-center">
+            Actulizar
+        </td>
+    </tr>
+    {% for producto in productos %}
+    <tr class="d-flex justify-content-center">
+        <td class="w-100 text-center">{{ producto.nombre }}</td>
+        <td class="w-100 text-center">{{ producto.precio }}</td>
+        <td class="w-100 text-center">{{ producto.cantidad }}</td>
+        <td class="w-100 text-center">
+            <a class="btn btn-outline-success"
+                href="{% url 'actualizar_productos' producto.id %}">Actualizar</a>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+
 {% endblock%}
