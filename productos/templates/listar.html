@@ -5,32 +5,56 @@
 <h1 class="d-flex justify-content-center bg-success text-white m-2 p-2 rounded-3">Listar Productos</h1>
 <div class="d-flex justify-content-center">
     <a class="mx-5 btn btn-outline-success m-3" href="{% url 'crear_productos' %}">Crear Productos</a>
-    <a class="mx-5 btn btn-outline-success m-3" href="{% url 'delete_productos' %}">Eliminar Productos</a>
+    <a class="mx-5 btn btn-outline-success m-3" href="{% url 'export' %}">Exportar</a>
+
 </div>
+
+{% if productos %}
+
 <table class="table table-striped">
-    <tr class="table d-flex justify-content-center">
-        <td class="bg-success-subtle text-success-emphasis rounded-top-4 d-flex flex-fill justify-content-center">Nombre
+    <tr class="row">
+        <td class="bg-success-subtle text-success-emphasis rounded-top-4 col text-center">
+            ID
         </td>
-        <td class="bg-success-subtle text-success-emphasis rounded-top-4 d-flex flex-fill justify-content-center">Precio
+        <td class="bg-success-subtle text-success-emphasis rounded-top-4 col text-center">
+            Nombre
         </td>
-        <td class="bg-success-subtle text-success-emphasis rounded-top-4 d-flex flex-fill justify-content-center">
+        <td class="bg-success-subtle text-success-emphasis rounded-top-4 col text-center">
+            Precio
+        </td>
+        <td class="bg-success-subtle text-success-emphasis rounded-top-4 col text-center">
             Cantidad
         </td>
-        <td class="bg-success-subtle text-success-emphasis rounded-top-4 d-flex flex-fill justify-content-center">
-            Actulizar
+        <td class="bg-success-subtle text-success-emphasis rounded-top-4 col text-center">
+            Actualizar
+        </td>
+        <td class="bg-success-subtle text-success-emphasis rounded-top-4 col text-center">
+            Eliminar
         </td>
     </tr>
     {% for producto in productos %}
-    <tr class="d-flex justify-content-center">
-        <td class="w-100 text-center">{{ producto.nombre }}</td>
-        <td class="w-100 text-center">{{ producto.precio }}</td>
-        <td class="w-100 text-center">{{ producto.cantidad }}</td>
-        <td class="w-100 text-center">
-            <a class="btn btn-outline-success"
-                href="{% url 'actualizar_productos' producto.id %}">Actualizar</a>
-        </td>
+    <tr class="row">
+        <form action="/delete" method="post" class="d-flex justify-content-center">{% csrf_token %}
+            <td class="col d-flex justify-content-center align-items-center">
+                <input id="id" name="id" readonly class="form-control-plaintext w-100 text-center"
+                    value="{{ producto.id }}">
+            </td>
+            <td class="col d-flex justify-content-center align-items-center">{{ producto.nombre }}</td>
+            <td class="col d-flex justify-content-center align-items-center">{{ producto.precio }}</td>
+            <td class="col d-flex justify-content-center align-items-center">{{ producto.cantidad }}</td>
+            <td class="col d-flex justify-content-center align-items-center">
+                <a class="btn btn-outline-success" href="{% url 'actualizar_productos' producto.id %}"><i
+                        class="bi bi-pencil-square"></i></a>
+            </td>
+            <td class="col text-center">
+                <button type="submit" class="btn btn-outline-success"><i class="bi bi-trash"></i></button>
+            </td>
+        </form>
     </tr>
     {% endfor %}
 </table>
+
+{% endif %}
+
 
 {% endblock%}

@@ -2,7 +2,12 @@
 {% block title %} Crear Productos {% endblock %}
 {% block content %}
 <link rel="stylesheet" href="">
-<h1 class="d-flex justify-content-center bg-success text-white m-2 p-2 rounded-3">Crear Productos</h1>
+<div class="d-flex justify-content-between bg-success text-white m-2 p-2 rounded-3">
+    <a href="/" class="p-0 btn d-flex justify-content-center align-items-center"><i
+            class="bi bi-arrow-left-square-fill mx-3"></i></a>
+    <h1 class="m-0">Crear Productos</h1>
+    <div class="mx-3"><div style="width: 20px; height: 20px;"></div></div>
+</div>
 <form class="d-flex flex-column align-items-center w-100" method="POST">
     {% csrf_token %}
 
@@ -25,13 +30,19 @@
     <div class="d-flex justify-content-center form-group row my-2 w-100">
         <label for="cantidad" class="col-sm-2 col-form-label">Cantidad: </label>
         <div class="col-sm-10 w-50">
-            <input type="number" id="cantidad" name="cantidad" placeholder="Ingrese la cantidad del producto" step="0.1"
-                min="0.1" class="form-control w-100" required />
+            <input type="number" id="cantidad" name="cantidad" placeholder="Ingrese la cantidad del producto" step="1"
+                min="0" class="form-control w-100" required />
         </div>
     </div>
 
     <div class="w-25 m-5 form-group row">
         <button type="submit" class="btn btn-outline-success">Crear Producto</button>
     </div>
+</form>
+
+<form action="/import" method="post" enctype="multipart/form-data" class="d-flex flex-column align-items-center w-100">
+    {% csrf_token %}
+    <input class="form-control w-25 my-3" type="file" id="file" name="file" required>
+    <button type="submit" class="btn btn-outline-success" href="">Importar</button>
 </form>
 {% endblock %}
